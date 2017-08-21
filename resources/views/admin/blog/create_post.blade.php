@@ -7,8 +7,8 @@
     @include('includes.info-box')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <form class=" well form-horizontal" action=" {{ route('admin.blog.post.create') }}" method="post" >
+            <section class="col-sm-7 col-sm-offset-1" style="padding-top: 60px">
+                <form class="form-horizontal" action=" {{ route('admin.blog.post.create') }}" method="post" >
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="title">Title</label>
                         <div class="col-md-6">
@@ -54,8 +54,7 @@
                         <label class="col-md-3 control-label" for="body">Body</label>
                         <div class="col-md-6">
                             <div class="input-group">
-                                {{--<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>--}}
-                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="12" cols="42">{{ Request::old('body') }}</textarea>
+                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="5" cols="35">{{ Request::old('body') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
                     </div>
 
                 </form>
-            </div>
+            </section>
         </div>
     </div>
 @endsection
