@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
-
-    <!-- Fonts -->
-{{-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}
-
 <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/bootstrap/font-awesome.min.css')}}">
@@ -17,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/common.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/form.css')}}">
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 <div class="container">
     @include('includes.header')
 </div>

@@ -1,20 +1,23 @@
 @extends('layout.admin_master')
 @section('styles')
     <link type="text/css" href="{{ URL::to('css/form.css') }}">
-    @endsection
+@endsection
 
 @section('content')
     @include('includes.info-box')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form class=" well form-horizontal" action=" {{ route('admin.blog.post.create') }}" method="post" >
+                <form class=" well form-horizontal" action=" {{ route('admin.blog.post.update') }}" method="post" >
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="title">Title</label>
                         <div class="col-md-6">
+
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-header fa-fw"></i></span>
-                                <input id="title" name="title" {{ $errors->has('title') ? 'class=has-error' : '' }} value="{{ Request::old('title') }}" class="form-control"  type="text" >
+                                <input id="title" name="title" {{ $errors->has('title') ? 'class=has-error' : '' }}
+                                value="{{ Request::old('title')? Request::old('title') : isset($post)? $post->title : '' }}"
+                                       class="form-control"  type="text" >
                             </div>
                         </div>
                     </div>
@@ -24,7 +27,8 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                <input id="author" name="author" {{ $errors->has('author') ? 'class=has-error' : '' }} value="{{ Request::old('author') }}"class="form-control"  type="text" >
+                                <input id="author" name="author" {{ $errors->has('author') ? 'class=has-error' : '' }}
+                                value="{{ Request::old('author')? Request::old('author') : isset($post)? $post->author : ''}}"class="form-control"  type="text" >
                             </div>
                         </div>
                     </div>
@@ -55,15 +59,18 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 {{--<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>--}}
-                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="12" cols="42">{{ Request::old('body') }}</textarea>
+                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="12" cols="42">
+                                    {{ Request::old('body')? Request::old('body') : isset($post)? $post->body : '' }}
+                                </textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-5">
-                            <button type="submit" class="btn btn-success">Create Post</button>
+                            <buttonh type="submit" class="btn btn-success">update Post</buttonh>
                             <input name="_token" type="hidden" value="{{Session::token()}}">
+                            <input name="post_id" type="hidden" value="{{ $post->id }}">
                         </div>
                     </div>
 

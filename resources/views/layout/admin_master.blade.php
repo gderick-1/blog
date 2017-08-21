@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/common.css')}}">
 
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 <div class="container">
     @include('includes.admin_header')
 </div>

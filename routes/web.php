@@ -16,17 +16,17 @@
 Route::group(['middleware'=> ['web']], function (){
     Route::get('/', [
         'uses' => 'PostController@getBlogIndex',
-        'as' => 'home.index'
+        'as' => 'blog.index'
     ]);
 
     Route::get('/blog', [
         'uses' => 'PostController@getBlogIndex',
-        'as' => 'home.index'
+        'as' => 'blog.index'
     ]);
 
     Route::get('/blog/{post_id}&{end}', [
         'uses' => 'PostController@getSinglePost',
-        'as' => 'home.single'
+        'as' => 'blog.single'
     ]);
 
 /*Other Routes*/
@@ -62,6 +62,16 @@ Route::group(['middleware'=> ['web']], function (){
         Route::post('/blog/posts/create', [
             'uses' => 'PostController@postCreatePost',
             'as' => 'admin.blog.post.create'
+        ]);
+
+        Route::get('/blog/posts/{post_id}/edit', [
+            'uses' => 'PostController@getPostUpdate',
+            'as' => 'admin.blog.post.edit'
+        ]);
+
+        Route::post('/blog/post/update', [
+            'uses' => 'PostController@postPostUpdate',
+            'as' => 'admin.blog.post.update'
         ]);
     });
 });

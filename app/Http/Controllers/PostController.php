@@ -19,7 +19,7 @@ class PostController extends Controller {
         foreach ($posts as $post){
             $post->body = $this->shortMessageContent($post->body, 20);
         }
-        return view('frontend.home.index', ['posts' => $posts]);
+        return view('frontend.blog.index', ['posts' => $posts]);
     }
 
     public function getPostIndex(){
@@ -31,9 +31,9 @@ class PostController extends Controller {
 
         $post = Post::find($post_id);
         if (!$post){
-            return redirect()->route('home.index')->with(['fail'=> 'post not found!']);
+            return redirect()->route('blog.index')->with(['fail'=> 'post not found!']);
         }
-        return view($end.'.home.single');
+        return view($end.'.blog.single', ['post'=> $post]);
     }
 
     public function getCreatePost(){
@@ -66,5 +66,32 @@ class PostController extends Controller {
         }
 
         return $text;
+    }
+    
+    public  function getPostUpdate($post_id){
+        $post = Post::find($post_id);
+        if (!$post){
+            return redirect()->route('blog.index')->with(['fail'=> 'post not found!']);
+        }
+        
+        //find categories
+        return view('admin.blog.edit_post', [ 'post' => $post]);
+    }
+
+    public function  postPostUpdate(Request $request){
+        $this->validate($request, [
+            'title' => 'required|max:120',
+            'author' => 'required|max:80',
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($request['post_id']);
+        $post->title = $request['title'];
+        $post->author = $request['author'];
+        $post->body = $request['body'];
+        $post->update();
+
+        // category
+        return redirect()->route('admin.index')->with(['success' => 'post successfully updated!']);
     }
 }

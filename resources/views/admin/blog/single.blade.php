@@ -1,8 +1,9 @@
 @extends('layout.admin_master')
+@section('title'){{ $post->title }} @endsection
 @section('content')
     <div class="container">
         <section id="admin_post">
-            <a href="">Edit</a>
+            <a href="{{ route('admin.blog.post.edit', [ 'post_id' => $post->id]) }}">Edit</a>
             <a href="">Delete</a>
         </section>
         <section class="post">

@@ -31,8 +31,8 @@
                                     <div class="edit">
                                         <nav>
                                             <ul>
-                                                <li><a href="#" class="btn btn-success">View</a></li>
-                                                <li><a href="#" class="btn btn-warning">Edit</a></li>
+                                                <li><a href="{{ route('admin.blog.post',['post_id' => $post->id, 'end' => 'admin']) }}" class="btn btn-success">View</a></li>
+                                                <li><a href="{{ route('admin.blog.post.edit', [ 'post_id' => $post->id]) }}" class="btn btn-warning">Edit</a></li>
                                                 <li><a href="#" class="btn btn-danger">Delete</a></li>
                                             </ul>
                                         </nav>
