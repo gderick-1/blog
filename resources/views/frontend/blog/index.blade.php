@@ -10,7 +10,9 @@
                 @foreach($posts as $post)
                 <article>
                     <h3>{{$post -> title}}</h3>
-                    <span class="nv-subtitle">Post by {{ $post->author }} | {{ $post->created_at->format('y-m-d') }}</span><hr>
+                    <span class="nv-subtitle">
+                        <img src="{{ URL::to('img/man.jpeg') }}" class="img-circle" height="50" width="50" alt="avatar" title="{{ $post->author }}">
+                        {{ $post->author }} | {{ $post->created_at->format('y-m-d') }}</span><hr>
                     <p>{{ $post -> body }}</p>
                     <a style="text-decoration: none; color: #000;" href="{{ route('blog.single',['post_id' => $post->id, 'end' => 'frontend']) }}">Read more<i class="fa fa-caret-right fa-fw"></i></a>
                 </article>

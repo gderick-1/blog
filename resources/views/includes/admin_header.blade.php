@@ -12,10 +12,10 @@
 
             <div class="collapse navbar-collapse" id="myNavBar">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.blog.index') }}">Posts</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Messages</a></li>
+                    <li {{ Request::is('admin') ? 'class=active' : ''}}><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                    <li {{ Request::is('admin/blog/post*') ? 'class=active' : ''}}><a href="{{ route('admin.blog.index') }}">Posts</a></li>
+                    <li {{ Request::is('admin/blog/categories*')|| Request::is('admin/blog/category*')? 'class=active' : ''}}><a href="{{ route('admin.blog.category') }}">Category</a></li>
+                    <li {{ Request::is('admin/blog/contact/*') ? 'class=active' : ''}}><a href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="fa fa-sign-out fa-fw"></span>Logout</a></li>

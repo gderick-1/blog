@@ -7,7 +7,9 @@
                 <div class=""></div>
                 <article>
                     <h3>{{ $post->title }}</h3>
-                    <span class="nv-subtitle">Posted by&nbsp;{{ $post->author }} | {{ $post->created_at->format('y-m-d') }}</span><hr>
+                    <span class="nv-subtitle">
+                        <img src="{{ URL::to('img/man.jpeg') }}" class="img-circle" height="50" width="50" alt="avatar" title="{{ $post->author }}">
+                        {{ $post->author }} | {{ $post->created_at->format('y-m-d') }}</span><hr>
                     <p>{{ $post->body }}</p>
                 </article>
             </section>

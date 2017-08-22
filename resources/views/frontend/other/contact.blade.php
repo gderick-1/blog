@@ -8,7 +8,7 @@
     @include('includes.info-box')
     <div class="container">
         <div class="row">
-            <section class="col-sm-7 col-sm-offset-1" id="top">
+            <section class="col-sm-7 col-sm-offset-1" style="padding-top: 60px;">
                 <form class="form-horizontal" action="" method="post" id="contact_id">
                         <div class="form-group">
                             <label class="col-md-3 control-label">Name</label>

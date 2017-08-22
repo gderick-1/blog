@@ -7,8 +7,8 @@
     @include('includes.info-box')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <form class=" well form-horizontal" action=" {{ route('admin.blog.post.update') }}" method="post" >
+            <div class="col-sm-7 col-sm-offset-1" style="padding-top: 60px;">
+                <form class="form-horizontal" action=" {{ route('admin.blog.post.update') }}" method="post" >
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="title">Title</label>
                         <div class="col-md-6">
@@ -45,11 +45,10 @@
                                     <option value="gambling">Betting</option>
                                     <option value="sure">Sure Bets</option>
                                 </select><!--&nbsp;-->
-                                <button type="button" class="btn btn-primary">Add</button>
-                                <input type="hidden" id="categories" name="categories">
-                                {{--<div class="added_category">
-                                    <ul></ul>
-                                </div>--}}
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary">Add category</button>
+                                    <input type="hidden" id="categories" name="categories">
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -58,8 +57,7 @@
                         <label class="col-md-3 control-label" for="body">Body</label>
                         <div class="col-md-6">
                             <div class="input-group">
-                                {{--<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>--}}
-                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="12" cols="42">
+                                <textarea name="body" id="body" {{ $errors->has('body') ? 'class=has-error' : '' }} rows="10" cols="50">
                                     {{ Request::old('body')? Request::old('body') : isset($post)? $post->body : '' }}
                                 </textarea>
                             </div>
@@ -68,7 +66,7 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-5">
-                            <buttonh type="submit" class="btn btn-success">update Post</buttonh>
+                            <button type="submit" class="btn btn-success">Save post</button>
                             <input name="_token" type="hidden" value="{{Session::token()}}">
                             <input name="post_id" type="hidden" value="{{ $post->id }}">
                         </div>

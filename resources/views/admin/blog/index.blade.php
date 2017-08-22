@@ -5,40 +5,41 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-7 col-sm-offset-1" style="padding-top: 60px;">
                 @include('includes.info-box')
                 <section id="post_admin" >
                     <a href="{{ route('admin.blog.create_post') }}" class="btn btn-primary">New post</a>
-                </section>
+                </section><br>
 
-                <section class="panel panel-body">
-                    <ul>
+                <section class="well">
                         @if(count($posts) == 0)
                             {{-- If no posts --}}
                             <li>No post</li>
                         @else
                             @foreach($posts as $post)
                                 {{-- If there is posts --}}
-                                <li>
+
                                     <article>
                                         <div class="post_info">
                                             <h3>{{ $post->title }}</h3>
-                                            <span class="panel-info">{{ $post->author }} | {{$post->created_at}}</span>
+                                            <span class="panel-info">
+                                                <img src="{{ URL::to('img/man.jpeg') }}" class="img-circle" height="50" width="50" alt="avatar" title="{{ $post->author }}">
+                                                {{ $post->author }} | {{ $post->created_at->format('y-m-d')}}</span>
+                                            <p>{{ $post->body }}</p>
                                         </div>
                                         <div class="edit">
                                             <nav>
                                                 <ul>
-                                                    <li><a href="{{ route('admin.blog.post',['post_id' => $post->id, 'end' => 'admin']) }}" class="btn btn-success">View</a></li>
-                                                    <li><a href="{{ route('admin.blog.post.edit', [ 'post_id' => $post->id]) }}" class="btn btn-warning">Edit</a></li>
-                                                    <li><a href="#" class="btn btn-danger">Delete</a></li>
+                                                    <a href="{{ route('admin.blog.post',['post_id' => $post->id, 'end' => 'admin']) }}" class="btn btn-success">View</a>
+                                                    <a href="{{ route('admin.blog.post.edit', [ 'post_id' => $post->id]) }}" class="btn btn-warning">Edit</a>
+                                                    <a href="{{ route('admin.blog.post.delete', ['post_id'=>$post->id]) }}" class="btn btn-danger">Delete</a>
                                                 </ul>
                                             </nav>
                                         </div>
-                                    </article>
-                                </li>
+                                    </article><hr>
                             @endforeach
                         @endif
-                    </ul>
+
                 </section>
 
                 @if($posts->lastPage()> 1)

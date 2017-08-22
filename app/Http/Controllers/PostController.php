@@ -91,7 +91,18 @@ class PostController extends Controller {
         $post->body = $request['body'];
         $post->update();
 
-        // category
+        // Attach category
         return redirect()->route('admin.index')->with(['success' => 'post successfully updated!']);
+    }
+    
+    public function getDelete($post_id){
+        $post = Post::find($post_id);
+        if (!$post){
+            return redirect()->route('blog.index')->with(['fail'=> 'post not found!']);
+        }
+        /*Delete posts*/
+        $post->delete();
+        
+        return redirect()->route('admin.index')->with(['success'=>'post successfully deleted!']);
     }
 }

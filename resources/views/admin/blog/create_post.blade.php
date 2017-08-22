@@ -7,8 +7,9 @@
     @include('includes.info-box')
     <div class="container">
         <div class="row">
-            <section class="col-sm-7 col-sm-offset-1" style="padding-top: 60px">
-                <form class="form-horizontal" action=" {{ route('admin.blog.post.create') }}" method="post" >
+            <section class=" col-sm-7 col-sm-offset-1" style="padding-top: 60px">
+                <form class="well form-horizontal" action=" {{ route('admin.blog.post.create') }}" method="post" >
+                    <legend><h3 class="text-center">Create new post</h3></legend>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="title">Title</label>
                         <div class="col-md-6">
@@ -41,11 +42,10 @@
                                     <option value="gambling">Betting</option>
                                     <option value="sure">Sure Bets</option>
                                 </select><!--&nbsp;-->
-                                <button type="button" class="btn btn-primary">Add</button>
-                                <input type="hidden" id="categories" name="categories">
-                                {{--<div class="added_category">
-                                    <ul></ul>
-                                </div>--}}
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-md">Add</button>
+                                    <input type="hidden" id="categories" name="categories">
+                                </span>
                             </div>
                         </div>
                     </div>
